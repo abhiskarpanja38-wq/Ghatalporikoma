@@ -1,0 +1,27 @@
+{
+  "name": "ঘাটাল শারদোৎসব পরিক্রমা ২০২৬",
+  "short_name": "ঘাটাল পরিক্রমা",
+  "description": "ঘাটালের দুর্গাপুজো প্যান্ডেল হপিং গাইড ২০২৬",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#fffdf5",
+  "theme_color": "#800000",
+  "lang": "bn",
+  "dir": "ltr",
+  "icons": [
+    {
+      "src": "image.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "image.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
