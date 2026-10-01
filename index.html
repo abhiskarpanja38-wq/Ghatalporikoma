@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ঘাটাল শারদোৎসব পরিক্রমা ২০২৬ | Pandal Hopping Guide</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts for Bengali -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tiro+Bangla:ital@0;1&family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Hind Siliguri', 'sans-serif'],
+                        serif: ['Tiro Bangla', 'serif'],
+                    },
+                    colors: {
+                        puja: {
+                            red: '#cc0000',       // Sindoor Red
+                            gold: '#ffb300',      // Gold
+                            maroon: '#800000',    // Deep Maroon
+                            cream: '#fffdf5',     // Off-white/Cream
+                            orange: '#ff6600',    // Festive Orange
+                        }
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'float-delayed': 'float 6s ease-in-out 3s infinite',
+                        'spin-slow': 'spin 8s linear infinite',
+                        'pulse-glow': 'pulseGlow 2s infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                        pulseGlow: {
+                            '0%, 100%': { opacity: 1, textShadow: '0 0 10px rgba(255, 179, 0, 0.5)' },
+                            '50%': { opacity: 0.8, textShadow: '0 0 20px rgba(255, 179, 0, 0.9)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #fffdf5;
+            color: #3e2723;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* Festive Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #fffdf5; }
+        ::-webkit-scrollbar-thumb { background: #cc0000; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #800000; }
+
+        .hero-bg {
+            background: linear-gradient(rgba(128, 0, 0, 0.75), rgba(204, 0, 0, 0.65)), 
+                        url('https://images.unsplash.com/photo-1601614532822-263a2a62dc4a?auto=format&fit=crop&q=80&w=1920');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .glass-nav {
+            background: rgba(255, 253, 245, 0.95);
+            backdrop-filter: blur(8px);
+            border-bottom: 2px solid #ffb300;
+        }
+
+        .alpona-divider {
+            height: 30px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 30"><path d="M50 15c-10 15-30 15-50 0 20-15 40-15 50 0 10 15 30 15 50 0-20-15-40-15-50 0z" fill="none" stroke="%23cc0000" stroke-width="2"/></svg>');
+            background-repeat: repeat-x;
+            background-size: contain;
+            opacity: 0.6;
+        }
+
+        .pandal-card {
+            transition: all 0.3s ease;
+        }
+        .pandal-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(204, 0, 0, 0.15);
+            border-color: #ffb300;
+        }
+
+        .map-line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: #ffb300;
+            transform: translateX(-50%);
+            z-index: 0;
+        }
+
+        .countdown-box {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 179, 0, 0.3);
+            border-radius: 1rem;
+            padding: 1rem;
+            min-width: 80px;
+        }
+        
+        @media (max-width: 768px) {
+            .map-line {
+                left: 24px;
+                transform: none;
+            }
+        }
+    </style>
+</head>
+<body class="antialiased font-sans">
+
+    <nav class="fixed w-full z-50 glass-nav shadow-sm transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center cursor-pointer" onclick="window.scrollTo(0,0)">
+                    <div class="w-10 h-10 bg-puja-red rounded-full flex items-center justify-center mr-3 shadow-lg">
+                        <i class="fa-solid fa-om text-puja-gold text-xl"></i>
+                    </div>
+                    <span class="font-serif text-2xl font-bold text-puja-maroon tracking-wide">
+                        ঘাটাল <span class="text-puja-red">পরিক্রমা</span>
+                    </span>
+                </div>
+                
+                <!-- Desktop Nav -->
+                <div class="hidden md:flex space-x-8 items-center font-medium text-lg">
+                    <a href="#home" class="text-gray-800 hover:text-puja-red transition-colors">প্রচ্ছদ</a>
+                    <a href="#pandals" class="text-gray-800 hover:text-puja-red transition-colors">সেরা মণ্ডপ</a>
+                    <a href="#route" class="text-gray-800 hover:text-puja-red transition-colors">রুট গাইড</a>
+                    <a href="#gallery" class="text-gray-800 hover:text-puja-red transition-colors">গ্যালারি</a>
+                    <a href="#helpline" class="bg-puja-red text-white px-5 py-2 rounded-full hover:bg-puja-maroon shadow-md transition-colors flex items-center gap-2">
+                        <i class="fa-solid fa-phone-volume"></i> জরুরি নম্বর
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-puja-maroon hover:text-puja-red focus:outline-none p-2">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Nav Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-puja-cream border-t-2 border-puja-gold shadow-xl absolute w-full left-0 top-20">
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <a href="#home" class="block px-4 py-3 text-lg font-medium text-gray-800 hover:text-puja-red hover:bg-puja-red/5 rounded-lg">প্রচ্ছদ (Home)</a>
+                <a href="#countdown-section" class="block px-4 py-3 text-lg font-medium text-gray-800 hover:text-puja-red hover:bg-puja-red/5 rounded-lg">কাউন্টডাউন (Countdown)</a>
+                <a href="#pandals" class="block px-4 py-3 text-lg font-medium text-gray-800 hover:text-puja-red hover:bg-puja-red/5 rounded-lg">সেরা মণ্ডপ (Top Pandals)</a>
+                <a href="#route" class="block px-4 py-3 text-lg font-medium text-gray-800 hover:text-puja-red hover:bg-puja-red/5 rounded-lg">রুট গাইড (Route Map)</a>
+                <a href="#gallery" class="block px-4 py-3 text-lg font-medium text-gray-800 hover:text-puja-red hover:bg-puja-red/5 rounded-lg">গ্যালারি (Gallery)</a>
+                <a href="#helpline" class="block px-4 py-3 text-lg font-bold text-puja-red hover:bg-puja-red/10 rounded-lg flex items-center gap-2">
+                    <i class="fa-solid fa-phone"></i> হেল্পলাইন
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="relative hero-bg min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+        
+        <!-- Festive Decorative Elements -->
+        <div class="absolute top-1/4 left-10 md:left-20 text-puja-gold opacity-60 animate-float text-4xl">
+            <i class="fa-solid fa-fan animate-spin-slow"></i>
+        </div>
+        <div class="absolute bottom-1/3 right-10 md:right-20 text-puja-gold opacity-60 animate-float-delayed text-5xl">
+            <i class="fa-solid fa-bell"></i>
+        </div>
+
+        <div class="max-w-5xl mx-auto px-4 relative z-10 text-center w-full mt-10">
+            <div class="bg-white/10 backdrop-blur-md p-8 md:p-16 rounded-3xl border border-white/20 shadow-2xl relative overflow-hidden inline-block w-full max-w-4xl">
+                
+                <span class="inline-block py-1.5 px-4 rounded-full bg-puja-gold text-puja-maroon font-bold tracking-wider text-sm mb-6 shadow-md border border-puja-gold/50">
+                    শারদোৎসব ২০২৬
+                </span>
+                
+                <h1 class="text-5xl sm:text-6xl md:text-8xl font-bold font-serif mb-4 text-white drop-shadow-lg leading-tight">
+                    ঘাটাল <br/><span class="text-puja-gold animate-pulse-glow">প্যান্ডেল হপিং</span>
+                </h1>
+                
+                <div class="w-32 h-1.5 bg-puja-red mx-auto mb-6 rounded-full shadow-[0_0_10px_rgba(204,0,0,0.8)]"></div>
+                
+                <p class="text-xl sm:text-2xl text-puja-cream mb-10 font-sans font-medium leading-relaxed max-w-2xl mx-auto drop-shadow-md">
+                    শহরের কোলাহল থেকে দূরে, ঘাটালের ঐতিহ্যবাহী ও থিম পুজোর এক অপরূপ মেলবন্ধন। চলুন ঘুরে দেখি ঘাটালের সেরা মণ্ডপগুলি।
+                </p>
+                
+                <div class="flex flex-col sm:flex-row justify-center gap-5">
+                    <a href="#pandals" class="inline-flex items-center justify-center px-8 py-4 text-lg font-bold rounded-full text-white bg-puja-red hover:bg-puja-maroon shadow-[0_4px_15px_rgba(204,0,0,0.5)] transition-all transform hover:-translate-y-1 hover:scale-105">
+                        মণ্ডপ দর্শন শুরু করুন <i class="fa-solid fa-person-walking-luggage ml-2"></i>
+                    </a>
+                    <a href="#countdown-section" class="inline-flex items-center justify-center px-8 py-4 text-lg font-bold rounded-full text-puja-maroon bg-puja-gold hover:bg-yellow-400 shadow-[0_4px_15px_rgba(255,179,0,0.5)] transition-all transform hover:-translate-y-1 hover:scale-105">
+                        পুজোর কাউন্টডাউন <i class="fa-solid fa-clock ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Wavy Bottom Edge -->
+        <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-none z-20">
+            <svg class="relative block w-full h-12 md:h-20" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C59.71,118.08,130.83,121.22,195.2,112.5,238.13,106.74,279.79,88.75,321.39,56.44Z" fill="#fffdf5"></path>
+            </svg>
+        </div>
+    </section>
+
+    <section id="countdown-section" class="py-16 bg-puja-maroon relative border-b-4 border-puja-gold">
+        <div class="max-w-5xl mx-auto px-4 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold font-serif text-puja-gold mb-2">মহা ষষ্ঠীর কাউন্টডাউন</h2>
+            <p class="text-puja-cream mb-8 font-sans text-lg">১৭ অক্টোবর ২০২৬ - মায়ের বোধন</p>
+            
+            <div class="flex flex-wrap justify-center gap-4 md:gap-8 font-serif">
+                <div class="countdown-box shadow-lg">
+                    <div id="days" class="text-4xl md:text-6xl font-bold text-white mb-1">০০</div>
+                    <div class="text-puja-gold text-sm md:text-base font-sans tracking-wider">দিন</div>
+                </div>
+                <div class="countdown-box shadow-lg">
+                    <div id="hours" class="text-4xl md:text-6xl font-bold text-white mb-1">০০</div>
+                    <div class="text-puja-gold text-sm md:text-base font-sans tracking-wider">ঘন্টা</div>
+                </div>
+                <div class="countdown-box shadow-lg">
+                    <div id="minutes" class="text-4xl md:text-6xl font-bold text-white mb-1">০০</div>
+                    <div class="text-puja-gold text-sm md:text-base font-sans tracking-wider">মিনিট</div>
+                </div>
+                <div class="countdown-box shadow-lg">
+                    <div id="seconds" class="text-4xl md:text-6xl font-bold text-white mb-1">০০</div>
+                    <div class="text-puja-gold text-sm md:text-base font-sans tracking-wider">সেকেন্ড</div>
+                </div>
+            </div>
+            <p id="countdown-message" class="text-xl text-puja-gold font-bold mt-8 hidden animate-pulse">শুভ মহা ষষ্ঠী! মায়ের বোধন শুরু হয়েছে।</p>
+        </div>
+    </section>
+
+    <section id="pandals" class="py-20 bg-puja-cream relative">
+        <div class="alpona-divider absolute top-0 left-0 w-full"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold font-serif text-puja-maroon mb-4">ঘাটালের সমস্ত পুজো মণ্ডপ</h2>
+                <div class="w-16 h-1 bg-puja-red mx-auto mb-6 rounded"></div>
+                <p class="text-gray-600 text-lg max-w-2xl mx-auto">ঘাটাল শহর ও আশেপাশের সমস্ত ঐতিহ্যবাহী ও থিম পুজো মণ্ডপগুলির সম্পূর্ণ তালিকা।</p>
+            </div>
+
+            <!-- Pandals Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Pandal 1 -->
+                <div class="pandal-card bg-white rounded-2xl overflow-hidden shadow-md border-2 border-transparent group">
+                    <div class="relative h-60 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1601614532822-263a2a62dc4a?auto=format&fit=crop&q=80&w=800" alt="Arabinda Stadium" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700">
+                        <div class="absolute top-4 right-4 bg-puja-red text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg">মেগা পুজো</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-serif font-bold text-puja-maroon mb-2">অরবিন্দ স্টেডিয়াম সর্বজনীন</h3>
+                        <p class="text-sm text-puja-orange font-bold mb-3"><i class="fa-solid fa-masks-theater mr-1"></i> থিম: "পুরোনো চাল ভাতে বাড়ে"</p>
+                        <p class="text-gray-600 mb-4 text-justify line-clamp-2">ঘাটালের অন্যতম বড় বাজেটের পুজো। বিশাল মণ্ডপ ও আলোকসজ্জা এই পুজোর প্রধান আকর্ষণ।</p>
+                        <div class="flex justify-between items-center border-t border-gray-100 pt-4">
+                            <span class="text-sm text-gray-500"><i class="fa-solid fa-location-dot text-puja-red mr-1"></i> সেন্ট্রাল বাস স্ট্যান্ড সংলগ্ন</span>
+                            <button onclick="openMap('Ghatal Arabinda Stadium')" class="text-puja-red hover:text-puja-maroon font-bold text-sm flex items-center gap-1 transition">
+                                পথনির্দেশ <i class="fa-solid fa-arrow-right-long"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pandal 2 -->
+                <div class="pandal-card bg-white rounded-2xl overflow-hidden shadow-md border-2 border-transparent group">
+                    <div class="relative h-60 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1632709088328-984cb402b85d?auto=format&fit=crop&q=80&w=800" alt="Kushpata" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700">
+                        <div class="absolute top-4 right-4 bg-puja-gold text-puja-maroon text-xs font-bold px-3 py-1.5 rounded-full shadow-lg">সেরা প্রতিমা</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-serif font-bold text-puja-maroon mb-2">কুশপাতা সর্বজনীন</h3>
+                        <p class="text-sm text-puja-orange font-bold mb-3"><i class="fa-solid fa-masks-theater mr-1"></i> থিম: "মাটির টানে"</p>
+                        <p class="text-gray-600 mb-4 text-justify line-clamp-2">সাবেকি প্রতিমা ও সুন্দর পরিবেশের জন্য কুশপাতা সর্বজনীন বিখ্যাত। প্রতিবছর দর্শনার্থীদের ভিড় চোখে পড়ার মতো।</p>
+                        <div class="flex justify-between items-center border-t border-gray-100 pt-4">
+                            <span class="text-sm text-gray-500"><i class="fa-solid fa-location-dot text-puja-red mr-1"></i> কুশপাতা মোড়</span>
+                            <button onclick="openMap('Kushpata Ghatal')" class="text-puja-red hover:text-puja-maroon font-bold text-sm flex items-center gap-1 transition">
+                                পথনির্দেশ <i class="fa-solid fa-arrow-right-long"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pandal 3 -->
+                <div class="pandal-card bg-white rounded-2xl overflow-hidden shadow-md border-2 border-transparent group">
+                    <div class="relative h-60 overflow-hidden">
+                        <!-- Using a solid color/pattern placeholder for variety -->
+                        <div class="w-full h-full bg-gradient-to-br from-puja-orange to-puja-red flex items-center justify-center transform group-hover:scale-110 transition duration-700">
+                            <i class="fa-brands fa-fort-awesome text-6xl text-white/50"></i>
+                        </div>
+                        <div class="absolute top-4 right-4 bg-blue-600 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg">সেরা আলোকসজ্জা</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-serif font-bold text-puja-maroon mb-2">আড়গোড়া রিক্রিয়েশন ক্লাব</h3>
+                        <p class="text-sm text-puja-orange font-bold mb-3"><i class="fa-solid fa-masks-theater mr-1"></i> থিম: "আলোর ভুবন"</p>
+                        <p class="text-gray-600 mb-4 text-justify line-clamp-2">চন্দননগরের বিশেষ আলোকসজ্জা এখানকার অন্যতম আকর্ষণ। রাতের বেলায় এই মণ্ডপের সৌন্দর্য দ্বিগুণ হয়ে যায়।</p>
+                        <div class="flex justify-between items-center border-t border-gray-100 pt-4">
+                            <span class="text-sm text-gray-500"><i class="fa-solid fa-location-dot text-puja-red mr-1"></i> আড়গোড়া, ঘাটাল</span>
+                            <button onclick="openMap('Argora Ghatal')" class="text-puja-red hover:text-puja-maroon font-bold text-sm flex items-center gap-1 transition">
+                                পথনির্দেশ <i class="fa-solid fa-arrow-right-long"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pandal 4 -->
+                <div class="pandal-card bg-white rounded-2xl overflow-hidden shadow-md border-2 border-transparent group">
+                    <div class="relative h-60 overflow-hidden">
+                        <div class="w-full h-full bg-gradient-to-br from-green-500 to-teal-700 flex items-center justify-center transform group-hover:scale-110 transition duration-700">
+                            <i class="fa-solid fa-leaf text-6xl text-white/50"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-serif font-bold text-puja-maroon mb-2">কোন্নগর তরুণ সংঘ</h3>
+                        <p class="text-sm text-puja-orange font-bold mb-3"><i class="fa-solid fa-masks-theater mr-1"></i> থিম: "গ্রাম বাংলার চালচিত্র"</p>
+                        <p class="text-gray-600 mb-4 text-justify line-clamp-2">পরিবেশ বান্ধব জিনিস দিয়ে তৈরি এই মণ্ডপ শহরের অন্যতম সেরা থিম পুজো।</p>
+                        <div class="flex justify-between items-center border-t border-gray-100 pt-4">
+                            <span class="text-sm text-gray-500"><i class="fa-solid fa-location-dot text-puja-red mr-1"></i> কোন্নগর</span>
+                            <button onclick="openMap('Konnagar Tarun Sangha Ghatal')" class="text-puja-red hover:text-puja-maroon font-bold text-sm flex items-center gap-1 transition">
+                                পথনির্দেশ <i class="fa-solid fa-arrow-right-long"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Pandal 5 -->
+                <div class="pandal-card bg-white rounded-2xl overflow-hidden shadow-md border-2 border-transparent group">
+                    <div class="relative h-60 overflow-hidden">
+                        <div class="w-full h-full bg-gradient-to-tr from-puja-maroon to-puja-red flex items-center justify-center transform group-hover:scale-110 transition duration-700">
+                            <i class="fa-solid fa-om text-6xl text-puja-gold/50"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-serif font-bold text-puja-maroon mb-2">খড়র সর্বজনীন</h3>
+                        <p class="text-sm text-puja-orange font-bold mb-3"><i class="fa-solid fa-masks-theater mr-1"></i> সাবেকি পুজো</p>
+                        <p class="text-gray-600 mb-4 text-justify line-clamp-2">ঘাটাল মহকুমার খড়র শহরের প্রাচীন ও ঐতিহ্যবাহী পুজো। সাবেকিয়ানা ও ভক্তির অনন্য মেলবন্ধন।</p>
+                        <div class="flex justify-between items-center border-t border-gray-100 pt-4">
+                            <span class="text-sm text-gray-500"><i class="fa-solid fa-location-dot text-puja-red mr-1"></i> খড়র পৌরসভা এলাকা</span>
+                            <button onclick="openMap('Kharar Hooghly')" class="text-puja-red hover:text-puja-maroon font-bold text-sm flex items-center gap-1 transition">
+                                পথনির্দেশ <i class="fa-solid fa-arrow-right-long"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pandal 6 -->
+                <div class="pandal-card bg-white rounded-2xl overflow-hidden shadow-md border-2 border-transparent group">
+                    <div class="relative h-60 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1574246604907-db69e30fd797?auto=format&fit=crop&q=80&w=800" alt="Birsingha" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-serif font-bold text-puja-maroon mb-2">বীরসিংহ বিদ্যাসাগর ক্লাব</h3>
+                        <p class="text-sm text-puja-orange font-bold mb-3"><i class="fa-solid fa-masks-theater mr-1"></i> থিম: "বর্ণপরিচয়"</p>
+                        <p class="text-gray-600 mb-4 text-justify line-clamp-2">পণ্ডিত ঈশ্বরচন্দ্র বিদ্যাসাগরের জন্মস্থানে এই ক্লাব প্রতিবছর শিক্ষামূলক থিম নিয়ে মণ্ডপ তৈরি করে।</p>
+                        <div class="flex justify-between items-center border-t border-gray-100 pt-4">
+                            <span class="text-sm text-gray-500"><i class="fa-solid fa-location-dot text-puja-red mr-1"></i> বীরসিংহ গ্রাম</span>
+                            <button onclick="openMap('Birsingha Ghatal')" class="text-puja-red hover:text-puja-maroon font-bold text-sm flex items-center gap-1 transition">
+                                পথনির্দেশ <i class="fa-solid fa-arrow-right-long"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pandal 7: Boro Bazar -->
+                <div class="pandal-card bg-white rounded-2xl overflow-hidden shadow-md border-2 border-transparent group">
+                    <div class="relative h-60 overflow-hidden">
+                        <div class="w-full h-full bg-gradient-to-br from-red-600 to-orange-500 flex items-center justify-center transform group-hover:scale-110 transition duration-700">
+                            <i class="fa-solid fa-vihara text-6xl text-white/50"></i>
+                        </div>
+                        <div class="absolute top-4 right-4 bg-puja-maroon text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg">সাবেকি প্রতিমা</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-serif font-bold text-puja-maroon mb-2">ঘাটাল বড়বাজার সর্বজনীন</h3>
+                        <p class="text-sm text-puja-orange font-bold mb-3"><i class="fa-solid fa-masks-theater mr-1"></i> সাবেকি পুজো</p>
+                        <p class="text-gray-600 mb-4 text-justify line-clamp-2">ঘাটালের প্রাচীনতম ও সবচেয়ে ঐতিহ্যবাহী পুজোগুলির মধ্যে একটি। ডাকের সাজের প্রতিমা এখানকার প্রধান আকর্ষণ।</p>
+                        <div class="flex justify-between items-center border-t border-gray-100 pt-4">
+                            <span class="text-sm text-gray-500"><i class="fa-solid fa-location-dot text-puja-red mr-1"></i> বড়বাজার, ঘাটাল</span>
+                            <button onclick="openMap('Boro Bazar Ghatal')" class="text-puja-red hover:text-puja-maroon font-bold text-sm flex items-center gap-1 transition">
+                                পথনির্দেশ <i class="fa-solid fa-arrow-right-long"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pandal 8: Govt Estate -->
+                <div class="pandal-card bg-white rounded-2xl overflow-hidden shadow-md border-2 border-transparent group">
+                    <div class="relative h-60 overflow-hidden">
+                        <div class="w-full h-full bg-gradient-to-tr from-cyan-600 to-blue-500 flex items-center justify-center transform group-hover:scale-110 transition duration-700">
+                            <i class="fa-solid fa-palette text-6xl text-white/50"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-serif font-bold text-puja-maroon mb-2">গভর্নমেন্ট এস্টেট পুজো কমিটি</h3>
+                        <p class="text-sm text-puja-orange font-bold mb-3"><i class="fa-solid fa-masks-theater mr-1"></i> থিম: "সৃষ্টি ও কৃষ্টি"</p>
+                        <p class="text-gray-600 mb-4 text-justify line-clamp-2">প্রতি বছর নতুন চিন্তাভাবনা ও সুসজ্জিত মণ্ডপ নিয়ে হাজির হয় এই ক্লাব। দর্শনার্থীদের ভিড় লেগেই থাকে।</p>
+                        <div class="flex justify-between items-center border-t border-gray-100 pt-4">
+                            <span class="text-sm text-gray-500"><i class="fa-solid fa-location-dot text-puja-red mr-1"></i> গভর্নমেন্ট এস্টেট</span>
+                            <button onclick="openMap('Govt Estate Ghatal')" class="text-puja-red hover:text-puja-maroon font-bold text-sm flex items-center gap-1 transition">
+                                পথনির্দেশ <i class="fa-solid fa-arrow-right-long"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pandal 9: Chouberia -->
+                <div class="pandal-card bg-white rounded-2xl overflow-hidden shadow-md border-2 border-transparent group">
+                    <div class="relative h-60 overflow-hidden">
+                        <div class="w-full h-full bg-gradient-to-tl from-purple-600 to-pink-500 flex items-center justify-center transform group-hover:scale-110 transition duration-700">
+                            <i class="fa-solid fa-lightbulb text-6xl text-white/50"></i>
+                        </div>
+                        <div class="absolute top-4 right-4 bg-blue-600 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg">আকর্ষণীয় আলোকসজ্জা</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-serif font-bold text-puja-maroon mb-2">চৌবেড়িয়া সর্বজনীন</h3>
+                        <p class="text-sm text-puja-orange font-bold mb-3"><i class="fa-solid fa-masks-theater mr-1"></i> সাবেকি ও আলোকসজ্জা</p>
+                        <p class="text-gray-600 mb-4 text-justify line-clamp-2">বিস্তীর্ণ মেলা প্রাঙ্গণ এবং চোখ ধাঁধানো আলোকসজ্জার জন্য চৌবেড়িয়ার পুজো সমগ্র মহকুমায় বিখ্যাত।</p>
+                        <div class="flex justify-between items-center border-t border-gray-100 pt-4">
+                            <span class="text-sm text-gray-500"><i class="fa-solid fa-location-dot text-puja-red mr-1"></i> চৌবেড়িয়া</span>
+                            <button onclick="openMap('Chouberia Ghatal')" class="text-puja-red hover:text-puja-maroon font-bold text-sm flex items-center gap-1 transition">
+                                পথনির্দেশ <i class="fa-solid fa-arrow-right-long"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pandal 10: Gambhirnagar -->
+                <div class="pandal-card bg-white rounded-2xl overflow-hidden shadow-md border-2 border-transparent group">
+                    <div class="relative h-60 overflow-hidden">
+                        <div class="w-full h-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center transform group-hover:scale-110 transition duration-700">
+                            <i class="fa-solid fa-tree text-6xl text-white/50"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-serif font-bold text-puja-maroon mb-2">গম্ভীরনগর যুব সংঘ</h3>
+                        <p class="text-sm text-puja-orange font-bold mb-3"><i class="fa-solid fa-masks-theater mr-1"></i> থিম: "শেকড়ের সন্ধানে"</p>
+                        <p class="text-gray-600 mb-4 text-justify line-clamp-2">নবীনদের উদ্যোগে তৈরি এই পুজো গত কয়েক বছর ধরে তাদের অভিনব থিমের জন্য নজর কাড়ছে।</p>
+                        <div class="flex justify-between items-center border-t border-gray-100 pt-4">
+                            <span class="text-sm text-gray-500"><i class="fa-solid fa-location-dot text-puja-red mr-1"></i> গম্ভীরনগর</span>
+                            <button onclick="openMap('Gambhirnagar Ghatal')" class="text-puja-red hover:text-puja-maroon font-bold text-sm flex items-center gap-1 transition">
+                                পথনির্দেশ <i class="fa-solid fa-arrow-right-long"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pandal 11: Krishnanagar -->
+                <div class="pandal-card bg-white rounded-2xl overflow-hidden shadow-md border-2 border-transparent group">
+                    <div class="relative h-60 overflow-hidden">
+                        <div class="w-full h-full bg-gradient-to-r from-teal-500 to-blue-500 flex items-center justify-center transform group-hover:scale-110 transition duration-700">
+                            <i class="fa-solid fa-leaf text-6xl text-white/50"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-serif font-bold text-puja-maroon mb-2">কৃষ্ণনগর অ্যাথলেটিক ক্লাব</h3>
+                        <p class="text-sm text-puja-orange font-bold mb-3"><i class="fa-solid fa-masks-theater mr-1"></i> থিম: "প্রকৃতি মায়ের কোলে"</p>
+                        <p class="text-gray-600 mb-4 text-justify line-clamp-2">পরিবেশ সচেতনতার বার্তা দিয়ে তৈরি এদের ইকো-ফ্রেন্ডলি মণ্ডপ শহরের অন্যতম আকর্ষণ।</p>
+                        <div class="flex justify-between items-center border-t border-gray-100 pt-4">
+                            <span class="text-sm text-gray-500"><i class="fa-solid fa-location-dot text-puja-red mr-1"></i> কৃষ্ণনগর, ঘাটাল</span>
+                            <button onclick="openMap('Krishnanagar Ghatal')" class="text-puja-red hover:text-puja-maroon font-bold text-sm flex items-center gap-1 transition">
+                                পথনির্দেশ <i class="fa-solid fa-arrow-right-long"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pandal 12: Rathtala -->
+                <div class="pandal-card bg-white rounded-2xl overflow-hidden shadow-md border-2 border-transparent group">
+                    <div class="relative h-60 overflow-hidden">
+                        <div class="w-full h-full bg-gradient-to-br from-yellow-500 to-orange-600 flex items-center justify-center transform group-hover:scale-110 transition duration-700">
+                            <i class="fa-solid fa-gopuram text-6xl text-white/50"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-serif font-bold text-puja-maroon mb-2">রথতলা সর্বজনীন</h3>
+                        <p class="text-sm text-puja-orange font-bold mb-3"><i class="fa-solid fa-masks-theater mr-1"></i> সাবেকি পুজো</p>
+                        <p class="text-gray-600 mb-4 text-justify line-clamp-2">মন্দিরের আদলে তৈরি সুউচ্চ মণ্ডপ এবং সাবেকি প্রতিমার এক অপূর্ব নিদর্শন এই রথতলার পুজো।</p>
+                        <div class="flex justify-between items-center border-t border-gray-100 pt-4">
+                            <span class="text-sm text-gray-500"><i class="fa-solid fa-location-dot text-puja-red mr-1"></i> রথতলা</span>
+                            <button onclick="openMap('Rathtala Ghatal')" class="text-puja-red hover:text-puja-maroon font-bold text-sm flex items-center gap-1 transition">
+                                পথনির্দেশ <i class="fa-solid fa-arrow-right-long"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pandal 13: Vidyasagar Pally -->
+                <div class="pandal-card bg-white rounded-2xl overflow-hidden shadow-md border-2 border-transparent group">
+                    <div class="relative h-60 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1540306353982-fdf50ecf60e9?auto=format&fit=crop&q=80&w=800" alt="Vidyasagar Pally" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-serif font-bold text-puja-maroon mb-2">বিদ্যাসাগর পল্লী সর্বজনীন</h3>
+                        <p class="text-sm text-puja-orange font-bold mb-3"><i class="fa-solid fa-masks-theater mr-1"></i> থিম: "বর্ণময় উৎসব"</p>
+                        <p class="text-gray-600 mb-4 text-justify line-clamp-2">আধুনিক শিল্পকলা ও সাবেকি চেতনার মিশেলে বিদ্যাসাগর পল্লীর পুজো দেখতে প্রতি বছর মানুষের ঢল নামে।</p>
+                        <div class="flex justify-between items-center border-t border-gray-100 pt-4">
+                            <span class="text-sm text-gray-500"><i class="fa-solid fa-location-dot text-puja-red mr-1"></i> বিদ্যাসাগর পল্লী</span>
+                            <button onclick="openMap('Vidyasagar Pally Ghatal')" class="text-puja-red hover:text-puja-maroon font-bold text-sm flex items-center gap-1 transition">
+                                পথনির্দেশ <i class="fa-solid fa-arrow-right-long"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pandal 14: Sripur -->
+                <div class="pandal-card bg-white rounded-2xl overflow-hidden shadow-md border-2 border-transparent group">
+                    <div class="relative h-60 overflow-hidden">
+                        <div class="w-full h-full bg-gradient-to-tr from-green-600 to-lime-500 flex items-center justify-center transform group-hover:scale-110 transition duration-700">
+                            <i class="fa-solid fa-seedling text-6xl text-white/50"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-serif font-bold text-puja-maroon mb-2">শ্রীপুর তরুণ সংঘ</h3>
+                        <p class="text-sm text-puja-orange font-bold mb-3"><i class="fa-solid fa-masks-theater mr-1"></i> থিম: "বাংলার গ্রাম"</p>
+                        <p class="text-gray-600 mb-4 text-justify line-clamp-2">গ্রাম বাংলার হারানো সংস্কৃতিকে মণ্ডপের মাধ্যমে তুলে ধরে শ্রীপুরের এই জনপ্রিয় ক্লাব।</p>
+                        <div class="flex justify-between items-center border-t border-gray-100 pt-4">
+                            <span class="text-sm text-gray-500"><i class="fa-solid fa-location-dot text-puja-red mr-1"></i> শ্রীপুর, ঘাটাল</span>
+                            <button onclick="openMap('Sripur Ghatal')" class="text-puja-red hover:text-puja-maroon font-bold text-sm flex items-center gap-1 transition">
+                                পথনির্দেশ <i class="fa-solid fa-arrow-right-long"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pandal 15: Mansuka -->
+                <div class="pandal-card bg-white rounded-2xl overflow-hidden shadow-md border-2 border-transparent group">
+                    <div class="relative h-60 overflow-hidden">
+                        <div class="w-full h-full bg-gradient-to-bl from-red-700 to-pink-700 flex items-center justify-center transform group-hover:scale-110 transition duration-700">
+                            <i class="fa-solid fa-hands-praying text-6xl text-white/50"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-serif font-bold text-puja-maroon mb-2">টিকায়েতপুর নবজীবন সংঘ</h3>
+                        <p class="text-sm text-puja-orange font-bold mb-3"><i class="fa-solid fa-masks-theater mr-1"></i> সাবেকি পুজো</p>
+                        <p class="text-gray-600 mb-4 text-justify line-clamp-2">ভক্তি ও নিষ্ঠার সাথে মায়ের আরাধনা হয় এখানে। দূর-দূরান্ত থেকে মানুষ এখানে অঞ্জলি দিতে আসেন।</p>
+                        <div class="flex justify-between items-center border-t border-gray-100 pt-4">
+                            <span class="text-sm text-gray-500"><i class="fa-solid fa-location-dot text-puja-red mr-1"></i> টিকায়েতপুর</span>
+                            <button onclick="openMap('Tikayetpur Nabajiban Sangha Ghatal')" class="text-puja-red hover:text-puja-maroon font-bold text-sm flex items-center gap-1 transition">
+                                পথনির্দেশ <i class="fa-solid fa-arrow-right-long"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pandal 16: Kismat Khanjapur -->
+                <div class="pandal-card bg-white rounded-2xl overflow-hidden shadow-md border-2 border-transparent group">
+                    <div class="relative h-60 overflow-hidden">
+                        <div class="w-full h-full bg-gradient-to-tr from-blue-400 to-cyan-500 flex items-center justify-center transform group-hover:scale-110 transition duration-700">
+                            <i class="fa-solid fa-water text-6xl text-white/50"></i>
+                        </div>
+                        <div class="absolute top-4 right-4 bg-puja-maroon text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg">বিশেষ আকর্ষণ</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-serif font-bold text-puja-maroon mb-2">কিসমত খানজাপুর সর্বজনীন</h3>
+                        <p class="text-sm text-puja-orange font-bold mb-3"><i class="fa-solid fa-masks-theater mr-1"></i> থিম: "জলের উপর পুজো"</p>
+                        <p class="text-gray-600 mb-4 text-justify line-clamp-2">বন্যার জমা জলকে থিমে রূপান্তর করে নৌকার উপর অভিনব মণ্ডপ তৈরি করেছে দাসপুরের এই পুজো কমিটি।</p>
+                        <div class="flex justify-between items-center border-t border-gray-100 pt-4">
+                            <span class="text-sm text-gray-500"><i class="fa-solid fa-location-dot text-puja-red mr-1"></i> কিসমত খানজাপুর, দাসপুর</span>
+                            <button onclick="openMap('Kismat Khanjapur Daspur')" class="text-puja-red hover:text-puja-maroon font-bold text-sm flex items-center gap-1 transition">
+                                পথনির্দেশ <i class="fa-solid fa-arrow-right-long"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pandal 17: Sabuj Sangha -->
+                <div class="pandal-card bg-white rounded-2xl overflow-hidden shadow-md border-2 border-transparent group">
+                    <div class="relative h-60 overflow-hidden">
+                        <div class="w-full h-full bg-gradient-to-bl from-green-500 to-lime-600 flex items-center justify-center transform group-hover:scale-110 transition duration-700">
+                            <i class="fa-solid fa-seedling text-6xl text-white/50"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-serif font-bold text-puja-maroon mb-2">সবুজ সংঘ ক্লাব</h3>
+                        <p class="text-sm text-puja-orange font-bold mb-3"><i class="fa-solid fa-masks-theater mr-1"></i> সাবেকি পুজো</p>
+                        <p class="text-gray-600 mb-4 text-justify line-clamp-2">স্থানীয়দের মধ্যে অত্যন্ত জনপ্রিয় এই পুজো প্রতিবছরই নিয়ম নিষ্ঠার সাথে পালিত হয়।</p>
+                        <div class="flex justify-between items-center border-t border-gray-100 pt-4">
+                            <span class="text-sm text-gray-500"><i class="fa-solid fa-location-dot text-puja-red mr-1"></i> মেছো গ্রাম, উত্তর ঘাটাল</span>
+                            <button onclick="openMap('Sabuj Sangha Club Mecho Gram Ghatal')" class="text-puja-red hover:text-puja-maroon font-bold text-sm flex items-center gap-1 transition">
+                                পথনির্দেশ <i class="fa-solid fa-arrow-right-long"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="route" class="py-20 bg-white relative">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold font-serif text-puja-maroon mb-4">প্যান্ডেল হপিং রুট গাইড</h2>
+                <div class="w-16 h-1 bg-puja-gold mx-auto mb-6 rounded"></div>
+                <p class="text-gray-600 text-lg">যানজট এড়িয়ে সহজে মণ্ডপ দর্শনের একটি প্রস্তাবিত রুট।</p>
+            </div>
+
+            <div class="relative">
+                <!-- Center Line -->
+                <div class="map-line"></div>
+
+                <!-- Step 1 -->
+                <div class="relative z-10 flex flex-col md:flex-row items-center mb-12">
+                    <div class="md:w-1/2 flex justify-end md:pr-12 w-full pl-12 md:pl-0 mb-4 md:mb-0">
+                        <div class="bg-puja-cream p-5 rounded-xl shadow-md border-r-4 border-puja-red text-left md:text-right w-full">
+                            <span class="text-sm font-bold text-puja-red bg-red-100 px-2 py-1 rounded">শুরু করুন</span>
+                            <h4 class="text-xl font-serif font-bold text-puja-maroon mt-2">ঘাটাল সেন্ট্রাল বাস স্ট্যান্ড</h4>
+                            <p class="text-gray-600 text-sm mt-1">বাস থেকে নেমে প্রথমে চলে যান অরবিন্দ স্টেডিয়াম।</p>
+                        </div>
+                    </div>
+                    <div class="absolute left-6 md:left-1/2 w-8 h-8 rounded-full bg-puja-red text-white flex items-center justify-center transform -translate-x-1/2 border-4 border-white shadow-lg">
+                        <i class="fa-solid fa-bus text-xs"></i>
+                    </div>
+                    <div class="md:w-1/2 w-full"></div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="relative z-10 flex flex-col md:flex-row items-center mb-12">
+                    <div class="md:w-1/2 w-full hidden md:block"></div>
+                    <div class="absolute left-6 md:left-1/2 w-8 h-8 rounded-full bg-puja-gold text-puja-maroon flex items-center justify-center transform -translate-x-1/2 border-4 border-white shadow-lg">
+                        1
+                    </div>
+                    <div class="md:w-1/2 md:pl-12 w-full pl-12">
+                        <div class="bg-white p-5 rounded-xl shadow-md border-l-4 border-puja-gold w-full hover:shadow-lg transition cursor-pointer" onclick="openMap('Ghatal Arabinda Stadium')">
+                            <h4 class="text-xl font-serif font-bold text-puja-maroon">অরবিন্দ স্টেডিয়াম সর্বজনীন</h4>
+                            <p class="text-gray-600 text-sm mt-1">হেঁটে পৌঁছাতে সময় লাগবে ৫ মিনিট।</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="relative z-10 flex flex-col md:flex-row items-center mb-12">
+                    <div class="md:w-1/2 flex justify-end md:pr-12 w-full pl-12 md:pl-0 mb-4 md:mb-0">
+                        <div class="bg-white p-5 rounded-xl shadow-md border-r-4 border-puja-maroon text-left md:text-right w-full hover:shadow-lg transition cursor-pointer" onclick="openMap('Kushpata Ghatal')">
+                            <h4 class="text-xl font-serif font-bold text-puja-maroon">কুশপাতা মোড়</h4>
+                            <p class="text-gray-600 text-sm mt-1">এখান থেকে টোটো ধরে কুশপাতা সর্বজনীন।</p>
+                        </div>
+                    </div>
+                    <div class="absolute left-6 md:left-1/2 w-8 h-8 rounded-full bg-puja-maroon text-white flex items-center justify-center transform -translate-x-1/2 border-4 border-white shadow-lg">
+                        2
+                    </div>
+                    <div class="md:w-1/2 w-full"></div>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="relative z-10 flex flex-col md:flex-row items-center mb-12">
+                    <div class="md:w-1/2 w-full hidden md:block"></div>
+                    <div class="absolute left-6 md:left-1/2 w-8 h-8 rounded-full bg-puja-orange text-white flex items-center justify-center transform -translate-x-1/2 border-4 border-white shadow-lg">
+                        3
+                    </div>
+                    <div class="md:w-1/2 md:pl-12 w-full pl-12">
+                        <div class="bg-white p-5 rounded-xl shadow-md border-l-4 border-puja-orange w-full hover:shadow-lg transition cursor-pointer" onclick="openMap('Argora Ghatal')">
+                            <h4 class="text-xl font-serif font-bold text-puja-maroon">আড়গোড়া রিক্রিয়েশন</h4>
+                            <p class="text-gray-600 text-sm mt-1">কুশপাতা থেকে আড়গোড়া। মণ্ডপ ও আলোকসজ্জা উপভোগ করুন।</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Step 5 (End) -->
+                <div class="relative z-10 flex flex-col md:flex-row items-center">
+                    <div class="md:w-1/2 flex justify-end md:pr-12 w-full pl-12 md:pl-0">
+                        <div class="bg-puja-cream p-5 rounded-xl shadow-md border-r-4 border-gray-600 text-left md:text-right w-full">
+                            <span class="text-sm font-bold text-gray-700 bg-gray-200 px-2 py-1 rounded">রাতের খাওয়া</span>
+                            <h4 class="text-xl font-serif font-bold text-puja-maroon mt-2">কলেজ মোড় / পাঁচবেড়িয়া</h4>
+                            <p class="text-gray-600 text-sm mt-1">এখানকার মেলা প্রাঙ্গণ থেকে স্ট্রিট ফুড ও মিষ্টি উপভোগ করুন।</p>
+                        </div>
+                    </div>
+                    <div class="absolute left-6 md:left-1/2 w-8 h-8 rounded-full bg-gray-600 text-white flex items-center justify-center transform -translate-x-1/2 border-4 border-white shadow-lg">
+                        <i class="fa-solid fa-utensils text-xs"></i>
+                    </div>
+                    <div class="md:w-1/2 w-full"></div>
+                </div>
+
+            </div>
+            
+            <div class="mt-12 text-center">
+                <button onclick="openMap('Durga Puja Pandals in Ghatal West Bengal')" class="bg-blue-600 text-white px-6 py-3 rounded-lg shadow-md hover:bg-blue-700 transition flex items-center justify-center gap-2 mx-auto font-bold">
+                    <i class="fa-brands fa-google"></i> Google Maps-এ সব মণ্ডপ খুঁজুন
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section id="helpline" class="py-16 bg-puja-maroon text-white relative border-t-4 border-puja-gold">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl md:text-4xl font-bold font-serif mb-3 text-puja-gold">জরুরি পরিষেবা ও হেল্পলাইন</h2>
+                <p class="text-puja-cream/80 text-sm md:text-base">নিরাপদে পুজো দেখুন। যেকোনো দরকারে নিচে দেওয়া নম্বরগুলোতে যোগাযোগ করুন।</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Police -->
+                <div class="bg-white/10 p-6 rounded-xl backdrop-blur-sm border border-white/20 text-center hover:bg-white/20 transition">
+                    <div class="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl shadow-lg">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-1">ঘাটাল থানা</h3>
+                    <a href="tel:100" class="block text-2xl font-bold text-puja-gold hover:text-white transition tracking-wider">100</a>
+                    <a href="tel:03222255323" class="block text-sm text-gray-300 mt-1 hover:text-white">03222-255323</a>
+                </div>
+
+                <!-- Hospital -->
+                <div class="bg-white/10 p-6 rounded-xl backdrop-blur-sm border border-white/20 text-center hover:bg-white/20 transition">
+                    <div class="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl shadow-lg">
+                        <i class="fa-solid fa-truck-medical"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-1">অ্যাম্বুলেন্স / হাসপাতাল</h3>
+                    <a href="tel:102" class="block text-2xl font-bold text-puja-gold hover:text-white transition tracking-wider">102</a>
+                    <p class="text-sm text-gray-300 mt-1">ঘাটাল মহকুমা হাসপাতাল</p>
+                </div>
+
+                <!-- Fire -->
+                <div class="bg-white/10 p-6 rounded-xl backdrop-blur-sm border border-white/20 text-center hover:bg-white/20 transition">
+                    <div class="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl shadow-lg">
+                        <i class="fa-solid fa-fire-extinguisher"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-1">দমকল কেন্দ্র</h3>
+                    <a href="tel:101" class="block text-2xl font-bold text-puja-gold hover:text-white transition tracking-wider">101</a>
+                    <a href="tel:03222255101" class="block text-sm text-gray-300 mt-1 hover:text-white">03222-255101</a>
+                </div>
+
+                <!-- Women Helpline -->
+                <div class="bg-white/10 p-6 rounded-xl backdrop-blur-sm border border-white/20 text-center hover:bg-white/20 transition">
+                    <div class="w-16 h-16 bg-pink-500 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl shadow-lg">
+                        <i class="fa-solid fa-person-dress"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-1">মহিলা হেল্পলাইন</h3>
+                    <a href="tel:1091" class="block text-2xl font-bold text-puja-gold hover:text-white transition tracking-wider">1091</a>
+                    <p class="text-sm text-gray-300 mt-1">২৪ ঘন্টা উপলব্ধ</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-900 pt-12 pb-8 text-white font-sans border-t-8 border-puja-red">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center mb-8 gap-6">
+                <div class="text-center md:text-left">
+                    <span class="font-serif text-3xl font-bold text-puja-gold block mb-2">
+                        শুভ শারদীয়া
+                    </span>
+                    <p class="text-gray-400 text-sm max-w-sm">
+                        মা দুর্গার আশীর্বাদে আপনাদের পুজো কাটুক আনন্দে ও নিরাপদে। ঘাটালবাসীদের জানাই প্রীতি ও শুভেচ্ছা।
+                    </p>
+                </div>
+                
+                <div class="flex gap-4">
+                    <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-puja-red hover:text-white transition">
+                        <i class="fa-brands fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-puja-red hover:text-white transition">
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-puja-red hover:text-white transition">
+                        <i class="fa-solid fa-share-nodes"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8 text-center flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
+                <p>&copy; ২০২৬ ঘাটাল শারদোৎসব গাইড। সর্বস্বত্ব সংরক্ষিত।</p>
+                <p class="mt-2 md:mt-0 flex items-center gap-1">
+                    Made with <i class="fa-solid fa-heart text-puja-red"></i> for Ghatal
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Open map function
+        function openMap(query) {
+            // Encoding query to safely pass it to URL
+            const encodedQuery = encodeURIComponent(query);
+            window.open(`https://www.google.com/maps/search/?api=1&query=${encodedQuery}`, '_blank');
+        }
+
+        function initCountdown() {
+            // Maha Shashthi is on October 17, 2026.
+            // Using a tentative time like 6:00 AM IST for Bodhon.
+            const countDownDate = new Date("Oct 17, 2026 06:00:00").getTime();
+
+            const x = setInterval(function() {
+                const now = new Date().getTime();
+                const distance = countDownDate - now;
+
+                if (distance < 0) {
+                    clearInterval(x);
+                    document.getElementById("days").innerHTML = "০০";
+                    document.getElementById("hours").innerHTML = "০০";
+                    document.getElementById("minutes").innerHTML = "০০";
+                    document.getElementById("seconds").innerHTML = "০০";
+                    document.getElementById("countdown-message").classList.remove("hidden");
+                    return;
+                }
+
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                // Convert numbers to Bengali digits
+                const toBengali = (num) => {
+                    const banglaDigits = ['০', '১', '২', '৩', '৪', '৫', '৬', '৭', '৮', '৯'];
+                    let str = num.toString().padStart(2, '0');
+                    return str.split('').map(digit => banglaDigits[digit]).join('');
+                };
+
+                document.getElementById("days").innerHTML = toBengali(days);
+                document.getElementById("hours").innerHTML = toBengali(hours);
+                document.getElementById("minutes").innerHTML = toBengali(minutes);
+                document.getElementById("seconds").innerHTML = toBengali(seconds);
+            }, 1000);
+        }
+
+
+        document.addEventListener('DOMContentLoaded', () => {
+            initCountdown();
+
+            // Mobile menu toggle logic
+            const mobileBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            mobileBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+                const icon = mobileBtn.querySelector('i');
+                if(mobileMenu.classList.contains('hidden')) {
+                    icon.classList.remove('fa-xmark');
+                    icon.classList.add('fa-bars');
+                } else {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-xmark');
+                }
+            });
+
+            // Close mobile menu on clicking a link inside it
+            const mobileLinks = mobileMenu.querySelectorAll('a');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                    mobileBtn.querySelector('i').classList.replace('fa-xmark', 'fa-bars');
+                });
+            });
+
+            // Navbar scroll effect - changes background opacity on scroll
+            window.addEventListener('scroll', () => {
+                const nav = document.getElementById('navbar');
+                if (window.scrollY > 50) {
+                    nav.style.background = 'rgba(255, 253, 245, 1)'; // Solid
+                    nav.classList.add('shadow-md');
+                } else {
+                    nav.style.background = 'rgba(255, 253, 245, 0.95)'; // Transparent
+                    nav.classList.remove('shadow-md');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
